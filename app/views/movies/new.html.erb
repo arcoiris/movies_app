@@ -1,12 +1,50 @@
 <h1>Add a new movie:</h1>
 <%= form_for @movie do |f| %>
-	<%= f.label :title %>
-	<%= f.text_field :title %>
-	<%= f.label :year_released %>
-	<%= f.text_field :year_released %>
-	<%= f.label :description %>
-	<%= f.text_field :description %>
-	<%= f.label :rating %>
-	<%= f.text_field :rating %>
-	<%= f.submit %> 
+	<% if @movie.errors.any? %>
+		<div id="error_explanation">
+		<h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved: </h2>
+			<ul>
+			<% @movie.errors.full_messages.each do |msg| %> 
+			<li><%= msg %></li>
+			<% end %>
+			</ul> 
+		</div>
+			<% end %>
+	<p>
+		<%= f.label :title %>:
+	</p>
+
+	<p>
+		<%= f.text_field :title %>
+	</p>
+
+	<p>
+		<%= f.label :year_released %>:
+	</p>
+
+	<p>
+		<%= f.text_field :year_released %>
+	</p>
+
+	<p>
+		<%= f.label :description %>:
+	</p>
+
+	<p>
+		<%= f.text_field :description %>
+	</p>
+
+	<p>
+		<%= f.label :rating %>:
+	</p>
+	
+	<p>
+		<%= f.text_field :rating %>
+	</p>
+	
+	<p>
+		<%= f.submit %> 
+	</p>
+
+	<%= link_to 'Back', movies_path %>
 <% end %>

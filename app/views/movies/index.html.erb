@@ -1,10 +1,14 @@
 <h1>Welcome to RetFlix!</h1>
 
 <%= form_tag '/search', method: :get do %>  <!--Get request adds params to the url -->
+	<% input_type="text", placeholder="Search..." %>
 	<%= label_tag 'q', "Search" %>
 	<%= text_field_tag 'q' %>
 	<%= submit_tag "Search" %> 
 <% end %> 
+<p>
+	<%= link_to 'Add a movie!', new_movie_path %>
+</p>
 <p>
 
 <%= render 'movies' %>

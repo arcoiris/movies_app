@@ -9,8 +9,13 @@ class MoviesController < ApplicationController
 	end
 
 	def create
-		movie = Movie.create safe_movie
-		redirect_to movie 
+		@movie = Movie.create safe_movie
+		
+		if @movie.save
+			redirect_to movie 
+		else 
+			render 'new'
+		end
 	end
 
 	def show 
